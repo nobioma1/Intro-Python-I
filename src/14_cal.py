@@ -22,3 +22,21 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+today = datetime.now()
+today_year = today.year
+today_month = today.month
+
+def view_calender(_, month = today_month, year = today_year):
+  try:
+    month = int(month)
+    year = int(year)
+    if month in range(1, 13):
+      return calendar.month(year, month)
+    return 'Invalid Input. Expected -> filename.py month(1-12) year'
+  except ValueError as e:
+    return 'Please Check input: filename(string) month(int) year(int)'
+
+if __name__ == "__main__":
+  arguments = sys.argv
+  print(view_calender(*arguments))
